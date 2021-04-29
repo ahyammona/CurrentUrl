@@ -444,14 +444,14 @@ const MNIST_LABELS_PATH =
           this.datasetLabels.slice(NUM_CLASSES * NUM_TRAIN_ELEMENTS);
     }
   
-    nextTrainBatch(batchSize:any) {
+    nextTrainBatch(this:any,batchSize:any) {
       const labelsRequest = fetch(MNIST_LABELS_PATH);
       const labelsResponse = labelsRequest;
      const datasetBytesBuffer = new ArrayBuffer(NUM_DATASET_ELEMENTS * IMAGE_SIZE * 4);
       const datasetImages = new Float32Array(datasetBytesBuffer);
       const trainImages = datasetImages.slice(0, IMAGE_SIZE * NUM_TRAIN_ELEMENTS)
       const trainIndices = tf.util.createShuffledIndices(NUM_TRAIN_ELEMENTS);
-      const datasetLabels = new Uint8Array( labelsResponse);
+      const datasetLabels = new Uint8Array( this.labelsResponse);
       const trainLabels = datasetLabels.slice(0, NUM_CLASSES * NUM_TRAIN_ELEMENTS);
       return this.nextBatch(
           batchSize, [trainImages, trainLabels], () => {

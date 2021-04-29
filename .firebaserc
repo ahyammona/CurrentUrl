@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ahyammona-aaaf6": {
+      "hosting": {
+        "NewAppOnAngular": [
+          "ahyammona-aaaf6"
+        ]
+      }
+    }
+  }
+}
